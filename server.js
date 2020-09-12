@@ -64,7 +64,7 @@ app.post("/api/notes", function(req, res) {
 
     saved_data.push(new_note);
     const saved_JSON = JSON.stringify(saved_data);
-    fs.writeFile(save_file, saved_JSON, this.encoding, error => {
+    fs.writeFile(save_file, saved_JSON, encoding, error => {
         if (error) throw error;
         console.log(`There was a note added:\n${JSON.stringify(new_note)}\n`);
     });
@@ -79,7 +79,7 @@ app.delete("/api/notes/:id", function(req, res) {
         if (chosen == saved_data[i].id) {
             const removed_note = saved_data.splice(i, 1);
             const saved_JSON = JSON.stringify(saved_data);
-            fs.writeFile(save_file, saved_JSON, this.encoding, error => {
+            fs.writeFile(save_file, saved_JSON, encoding, error => {
                 if (error) throw error;
                 console.log(`There was a deleted note:\n${JSON.stringify(removed_note)}\n`);
             });
